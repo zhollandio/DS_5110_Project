@@ -521,3 +521,196 @@ By observing both execution-level metrics (e.g., total time, memory usage, cost)
 **Takeaway**:  
 For CPU-based deployments with sufficient memory, larger batch sizes (e.g. 64–128) are optimal. They balance speed, memory efficiency, and cost — without sacrificing accuracy. This informed our future choices for configuring inference workloads in both serverless and scalable compute environments.
 </details>
+
+
+
+<details>
+<summary><strong>Step 4: Cosmic AI Inference with AWS Lambda</strong></summary>
+
+## Overview
+In this step, we deploy a serverless, distributed inference pipeline to estimate redshifts in astronomical imagery using pre-trained deep learning models. Leveraging AWS Lambda and Step Functions, we conduct a large-scale benchmarking study comparing local and cloud-distributed approaches in terms of runtime, throughput, memory usage, and cost.
+
+## Authors
+**Zachary Holland** & **Devlin Bridges** (Group 2)
+
+---
+
+## Architecture Components
+
+### 1. **Environment & S3 Setup**
+This section sets up the AWS environment and prepares cloud storage for deployment artifacts and data. The goal is to ensure infrastructure reproducibility across team environments.
+
+- **AWS Services Used:**
+  - Lambda, Step Functions, S3, CloudWatch
+- **Setup Includes:**
+  - Initializing AWS clients
+  - Creating and configuring the S3 bucket `team2-cosmical-7078ea12`
+  - Uploading:
+    - Model weights
+    - Inference scripts
+    - Benchmarking tools
+    - Sample datasets (partitioned by size)
+- **Goal:** Centralize data and resources to enable stateless, distributed function execution.
+
+---
+
+### 2. **Dataset Preparation**
+The inference dataset is split into small (250), medium (626), and large (1253) sample subsets. Each subset is uploaded to S3 for remote Lambda access.
+
+- **Source:** Pre-generated PyTorch TensorDataset (`Inference.pt`)
+- **Shapes:** Each sample has shape `[64, 64, 5]`, representing multi-band astronomical images
+- **Purpose:** Allow consistent performance testing across varying data volumes
+
+---
+
+### 3. **Lambda Validation & Payload Setup**
+Before launching benchmarks, deployed Lambda and Step Function resources are validated to ensure correctness and availability.
+
+- **Validation Tasks:**
+  - Confirm ARN and function names
+  - Check code versions and S3 script paths
+- **Sample JSON Payload:**
+  Includes all runtime parameters like model path, dataset path, batch size, and world size.
+
+```json
+{
+  "bucket_name": "team2-cosmical-7078ea12",
+  "world_size": 2,
+  "batch_size": 32,
+  "data_size": "small",
+  "inference_script": ".../inference_FMI.py",
+  "model_path": ".../Mixed_Inception_z_VITAE_Base.pt",
+  "dataset_path": ".../inference_subset.pt"
+}
+```
+
+---
+
+### 4. **Execution & Benchmarking**
+This is the core experiment phase. Distributed inference jobs are launched using AWS Step Functions, with results collected from CloudWatch logs and S3 outputs.
+
+- **Scenarios Tested:** 17 unique combinations
+- **Key Parameters Varied:**
+  - `world_size`: 1, 2, 4, 8
+  - `batch_size`: 1 through 128
+  - `data_size`: small, medium, large
+- **Output Metrics:**
+  - Total time
+  - Samples/sec throughput
+  - Memory usage
+  - Estimated cost
+
+---
+
+### 5. **Performance Comparison**
+
+#### Local Baseline Performance:
+```
+ batch_size  total_time  throughput      cpu_memory_mb  estimated_cost_usd
+          1   112.786112  1.823739e+06   24149.779244   0.011630
+          2    60.774210  3.384536e+06   25377.380952   0.006266
+          4    36.254240  5.673612e+06   25226.688448   0.003738
+          8    20.955568  9.815648e+06   25143.055728   0.002161
+         16    13.982232  1.471099e+07   25126.061396   0.001442
+         32    10.322370  1.992687e+07   25182.747040   0.001064
+         64     8.425917  2.441188e+07   25175.413408   0.000869
+        128     7.209417  2.853108e+07   25215.607820   0.000743
+```
+
+
+#### Performance Comparison: Local vs Distributed
+
+```
+World Size  Batch Size  Dataset  Local Time (s)  Dist Time (s)  Speedup  Efficiency  Local Cost ($)  Dist Cost ($)  Cost Decrease
+1           16          small    13.98           6.68           2.09x     209.3%       0.001442        0.000014        99.0%
+1           32          small    10.32           6.42           1.61x     160.9%       0.001064        0.000013        98.7%
+1           64          small     8.43           6.64           1.27x     127.0%       0.000869        0.000014        98.4%
+2           32          small    10.32           6.77           1.53x      76.3%       0.001064        0.000028        97.3%
+2           64          medium    8.43           6.37           1.32x      66.1%       0.000869        0.000027        96.9%
+2           128         large     7.21           6.46           1.12x      55.8%       0.000743        0.000027        96.4%
+4           64          medium    8.43           6.81           1.24x      30.9%       0.000869        0.000057        93.5%
+8           64          large     8.43           9.94           0.85x      10.6%       0.000869        0.000166        80.9%
+8           128         large     7.21           6.55           1.10x      13.8%       0.000743        0.000109        85.3%
+1           1           large   112.79           6.75          16.72x    1671.6%       0.011630        0.000014        99.9%
+1           2           large    60.77           6.46           9.41x     941.1%       0.006266        0.000013        99.8%
+1           4           large    36.25           6.34           5.71x     571.5%       0.003738        0.000013        99.6%
+1           8           large    20.96           6.46           3.24x     324.4%       0.002161        0.000013        99.4%
+1           16          large    13.98           6.36           2.20x     219.7%       0.001442        0.000013        99.1%
+1           32          large    10.32           6.40           1.61x     161.3%       0.001064        0.000013        98.7%
+1           64          large     8.43           6.54           1.29x     128.9%       0.000869        0.000014        98.4%
+1           128         large     7.21           6.40           1.13x     112.6%       0.000743        0.000013        98.2%
+```
+
+#### Comparison Summary:
+- Local baseline: Single node with ~25075 MB memory
+- Distributed: Lambda functions with 128 MB memory each
+- Average speedup: 3.14x
+- Average cost decrease: 96.4%
+- Local cost range: $0.000743 - $0.011630
+- Distributed cost range: $0.000013 - $0.000166
+#### Performance Comparison: Local vs Distributed
+_(Full comparative table showing speedup, efficiency, and cost decrease across all configurations)_
+
+<img width="1019" height="863" alt="f02c7f59d661cd3c3510d40ca6adb580-1" src="https://github.com/user-attachments/assets/56ad3f59-b192-415c-9e37-d90f03194789" />
+
+
+
+#### Summary:
+- **Avg Speedup (world_size=1):** 5.16x
+- **Avg Cost Reduction:** 99.1%
+- **Memory Reduction:** 99.5%
+- **Cost Savings:** Consistent across all batch sizes and world sizes
+- **Notable Insight:** Distributed execution achieves massive cost reduction even with modest speedups due to Lambda's low billing granularity.
+
+---
+
+## Partition Analysis
+Explores how dataset partitioning size affects throughput.
+
+```
+20MB ÷ 1 workers = 20.0MB/worker → 6.6s
+20MB ÷ 2 workers = 10.0MB/worker → 6.8s
+50MB ÷ 2 workers = 25.0MB/worker → 6.4s
+50MB ÷ 4 workers = 12.5MB/worker → 6.8s
+100MB ÷ 1 workers = 100.0MB/worker → 6.5s
+100MB ÷ 2 workers = 50.0MB/worker → 6.5s
+100MB ÷ 8 workers = 12.5MB/worker → 8.2s
+```
+
+---
+
+## Monthly Cost Analysis (1000 runs)
+Estimates cloud billing based on AWS Lambda pricing vs local execution.
+
+```
+Batch 1: Local=$11.63, Distributed=$0.01 (Save 99.9%)
+Batch 2: Local=$6.27, Distributed=$0.01 (Save 99.8%)
+Batch 4: Local=$3.74, Distributed=$0.01 (Save 99.6%)
+...
+Batch 128: Local=$0.74, Distributed=$0.01 (Save 98.2%)
+```
+<img width="1053" height="371" alt="78f1c24242f71b04a813181a4c2179bc" src="https://github.com/user-attachments/assets/0a236174-5a27-4fe6-a049-abe6cd58dc8c" />
+
+---
+
+## Parallel Efficiency Analysis
+Quantifies how well additional workers improve performance.
+
+```
+World Size 1: 100.0%
+World Size 2: 49.7%
+World Size 4: 23.8%
+World Size 8: 9.8%
+```
+
+---
+
+## Key Insights
+- Smaller partitions (≤10MB) are inefficient due to sync overhead
+- Larger batch sizes maximize speedup and cost-effectiveness
+- Most efficient range: 25MB–50MB per worker
+- Distributed execution offers >98% cost reduction across configurations
+- Near real-time inference is feasible with minimal infrastructure overhead
+
+</details>
+
