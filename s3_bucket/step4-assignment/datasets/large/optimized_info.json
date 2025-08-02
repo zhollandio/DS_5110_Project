@@ -1,0 +1,8 @@
+{
+  "name": "large",
+  "samples": 1253,
+  "optimal_workers": 8,
+  "estimated_size_mb": 100,
+  "optimization_applied": true,
+  "created_timestamp": "2025-07-30T19:14:12.566511"
+}

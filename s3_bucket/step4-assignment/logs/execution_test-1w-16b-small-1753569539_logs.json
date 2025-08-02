@@ -1,0 +1,333 @@
+{
+  "execution_metadata": {
+    "execution_name": "test-1w-16b-small-1753569539",
+    "team": "Team 2",
+    "unique_id": "7078ea12",
+    "start_time": "2025-07-26T22:38:59.188000+00:00",
+    "end_time": "2025-07-26T22:39:06.376000+00:00"
+  },
+  "logs_by_lambda": {
+    "/aws/lambda/data-parallel-init2": [
+      {
+        "timestamp": "2025-07-26T22:38:59.397000",
+        "message": "START RequestId: 686111db-7342-4757-9e43-4f47e857d39a Version: $LATEST\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:38:59.736000",
+        "message": "END RequestId: 686111db-7342-4757-9e43-4f47e857d39a\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:38:59.736000",
+        "message": "REPORT RequestId: 686111db-7342-4757-9e43-4f47e857d39a\tDuration: 337.14 ms\tBilled Duration: 338 ms\tMemory Size: 128 MB\tMax Memory Used: 91 MB\t\n"
+      }
+    ],
+    "/aws/lambda/inference": [
+      {
+        "timestamp": "2025-07-26T22:38:59.889000",
+        "message": "START RequestId: bf4021a1-3165-408f-9889-a1c0a8b7156b Version: $LATEST\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:38:59.890000",
+        "message": "Processing rank 0 with data None\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:02.237000",
+        "message": "END RequestId: bf4021a1-3165-408f-9889-a1c0a8b7156b\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:02.237000",
+        "message": "REPORT RequestId: bf4021a1-3165-408f-9889-a1c0a8b7156b\tDuration: 2346.27 ms\tBilled Duration: 2347 ms\tMemory Size: 128 MB\tMax Memory Used: 90 MB\t\n"
+      }
+    ],
+    "/aws/lambda/summarize": [
+      {
+        "timestamp": "2025-07-26T22:39:02.396000",
+        "message": "START RequestId: 42acd135-0a62-4b49-89dd-022a7c42e635 Version: $LATEST\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:02.396000",
+        "message": "[INFO]\t2025-07-26T22:39:02.396Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tLooking for files in bucket: cosmicai-data, prefix: results\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:02.815000",
+        "message": "[INFO]\t2025-07-26T22:39:02.815Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:02.894000",
+        "message": "[INFO]\t2025-07-26T22:39:02.894Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_10_ws2_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:02.934000",
+        "message": "[INFO]\t2025-07-26T22:39:02.934Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_10_ws2_bs128/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:02.987000",
+        "message": "[INFO]\t2025-07-26T22:39:02.987Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_11_ws3_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.014000",
+        "message": "[INFO]\t2025-07-26T22:39:03.014Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_11_ws3_bs8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.054000",
+        "message": "[INFO]\t2025-07-26T22:39:03.054Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_11_ws3_bs8/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.076000",
+        "message": "[INFO]\t2025-07-26T22:39:03.076Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_12_ws3_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.198000",
+        "message": "[INFO]\t2025-07-26T22:39:03.198Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_12_ws3_bs16/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.218000",
+        "message": "[INFO]\t2025-07-26T22:39:03.218Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_12_ws3_bs16/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.256000",
+        "message": "[INFO]\t2025-07-26T22:39:03.256Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_13_ws3_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.336000",
+        "message": "[INFO]\t2025-07-26T22:39:03.336Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_13_ws3_bs32/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.401000",
+        "message": "[INFO]\t2025-07-26T22:39:03.401Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_13_ws3_bs32/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.436000",
+        "message": "[INFO]\t2025-07-26T22:39:03.435Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_14_ws3_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.536000",
+        "message": "[INFO]\t2025-07-26T22:39:03.536Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_14_ws3_bs64/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.585000",
+        "message": "[INFO]\t2025-07-26T22:39:03.585Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_14_ws3_bs64/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.660000",
+        "message": "[INFO]\t2025-07-26T22:39:03.660Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_15_ws3_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.696000",
+        "message": "[INFO]\t2025-07-26T22:39:03.696Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_15_ws3_bs128/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.761000",
+        "message": "[INFO]\t2025-07-26T22:39:03.761Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_15_ws3_bs128/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.792000",
+        "message": "[INFO]\t2025-07-26T22:39:03.792Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_16_ws4_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.864000",
+        "message": "[INFO]\t2025-07-26T22:39:03.864Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_16_ws4_bs8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.907000",
+        "message": "[INFO]\t2025-07-26T22:39:03.907Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_16_ws4_bs8/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:03.943000",
+        "message": "[INFO]\t2025-07-26T22:39:03.943Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_16_ws4_bs8/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.014000",
+        "message": "[INFO]\t2025-07-26T22:39:04.014Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_17_ws4_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.054000",
+        "message": "[INFO]\t2025-07-26T22:39:04.054Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_17_ws4_bs16/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.094000",
+        "message": "[INFO]\t2025-07-26T22:39:04.094Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_17_ws4_bs16/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.124000",
+        "message": "[INFO]\t2025-07-26T22:39:04.124Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_17_ws4_bs16/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.221000",
+        "message": "[INFO]\t2025-07-26T22:39:04.221Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_18_ws4_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.254000",
+        "message": "[INFO]\t2025-07-26T22:39:04.254Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_18_ws4_bs32/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.294000",
+        "message": "[INFO]\t2025-07-26T22:39:04.294Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_18_ws4_bs32/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.351000",
+        "message": "[INFO]\t2025-07-26T22:39:04.351Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_18_ws4_bs32/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.403000",
+        "message": "[INFO]\t2025-07-26T22:39:04.403Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_19_ws4_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.436000",
+        "message": "[INFO]\t2025-07-26T22:39:04.436Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_19_ws4_bs64/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.483000",
+        "message": "[INFO]\t2025-07-26T22:39:04.483Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_19_ws4_bs64/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.516000",
+        "message": "[INFO]\t2025-07-26T22:39:04.516Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_19_ws4_bs64/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.567000",
+        "message": "[INFO]\t2025-07-26T22:39:04.566Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_1_ws1_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.594000",
+        "message": "[INFO]\t2025-07-26T22:39:04.594Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_20_ws4_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.634000",
+        "message": "[INFO]\t2025-07-26T22:39:04.634Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_20_ws4_bs128/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.674000",
+        "message": "[INFO]\t2025-07-26T22:39:04.674Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_20_ws4_bs128/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.714000",
+        "message": "[INFO]\t2025-07-26T22:39:04.714Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_20_ws4_bs128/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.754000",
+        "message": "[INFO]\t2025-07-26T22:39:04.754Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_2_ws1_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.794000",
+        "message": "[INFO]\t2025-07-26T22:39:04.794Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_3_ws1_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.834000",
+        "message": "[INFO]\t2025-07-26T22:39:04.834Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_4_ws1_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.874000",
+        "message": "[INFO]\t2025-07-26T22:39:04.874Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_5_ws1_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.914000",
+        "message": "[INFO]\t2025-07-26T22:39:04.914Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_6_ws2_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.957000",
+        "message": "[INFO]\t2025-07-26T22:39:04.957Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_6_ws2_bs8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:04.998000",
+        "message": "[INFO]\t2025-07-26T22:39:04.998Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_7_ws2_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.034000",
+        "message": "[INFO]\t2025-07-26T22:39:05.034Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_7_ws2_bs16/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.074000",
+        "message": "[INFO]\t2025-07-26T22:39:05.074Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_8_ws2_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.095000",
+        "message": "[INFO]\t2025-07-26T22:39:05.095Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_8_ws2_bs32/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.134000",
+        "message": "[INFO]\t2025-07-26T22:39:05.134Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_9_ws2_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.193000",
+        "message": "[INFO]\t2025-07-26T22:39:05.193Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/test_9_ws2_bs64/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.248000",
+        "message": "[INFO]\t2025-07-26T22:39:05.248Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_1/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.283000",
+        "message": "[INFO]\t2025-07-26T22:39:05.283Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_2/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.334000",
+        "message": "[INFO]\t2025-07-26T22:39:05.334Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_2/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.374000",
+        "message": "[INFO]\t2025-07-26T22:39:05.374Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_2/combined_data.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.412000",
+        "message": "[INFO]\t2025-07-26T22:39:05.412Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_4/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.454000",
+        "message": "[INFO]\t2025-07-26T22:39:05.454Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_4/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.515000",
+        "message": "[INFO]\t2025-07-26T22:39:05.515Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_4/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.558000",
+        "message": "[INFO]\t2025-07-26T22:39:05.558Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_4/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.595000",
+        "message": "[INFO]\t2025-07-26T22:39:05.595Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.634000",
+        "message": "[INFO]\t2025-07-26T22:39:05.634Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.655000",
+        "message": "[INFO]\t2025-07-26T22:39:05.654Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.732000",
+        "message": "[INFO]\t2025-07-26T22:39:05.732Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.823000",
+        "message": "[INFO]\t2025-07-26T22:39:05.823Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/4.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.854000",
+        "message": "[INFO]\t2025-07-26T22:39:05.854Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/5.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.902000",
+        "message": "[INFO]\t2025-07-26T22:39:05.902Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/6.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:05.942000",
+        "message": "[INFO]\t2025-07-26T22:39:05.942Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tProcessing file: results/world_8/7.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:06.274000",
+        "message": "[INFO]\t2025-07-26T22:39:06.274Z\t42acd135-0a62-4b49-89dd-022a7c42e635\tCombined data uploaded to results/combined_data.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:06.295000",
+        "message": "END RequestId: 42acd135-0a62-4b49-89dd-022a7c42e635\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:39:06.295000",
+        "message": "REPORT RequestId: 42acd135-0a62-4b49-89dd-022a7c42e635\tDuration: 3898.23 ms\tBilled Duration: 3899 ms\tMemory Size: 128 MB\tMax Memory Used: 88 MB\t\n"
+      }
+    ]
+  }
+}

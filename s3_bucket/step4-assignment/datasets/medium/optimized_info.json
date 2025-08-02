@@ -1,0 +1,8 @@
+{
+  "name": "medium",
+  "samples": 626,
+  "optimal_workers": 4,
+  "estimated_size_mb": 50,
+  "optimization_applied": true,
+  "created_timestamp": "2025-07-30T19:14:12.535937"
+}

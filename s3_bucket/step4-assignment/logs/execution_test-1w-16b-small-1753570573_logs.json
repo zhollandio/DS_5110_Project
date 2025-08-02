@@ -1,0 +1,353 @@
+{
+  "execution_metadata": {
+    "execution_name": "test-1w-16b-small-1753570573",
+    "team": "Team 2",
+    "unique_id": "7078ea12",
+    "start_time": "2025-07-26T22:56:13.946000+00:00",
+    "end_time": "2025-07-26T22:56:27.730000+00:00"
+  },
+  "logs_by_lambda": {
+    "/aws/lambda/data-parallel-init2": [
+      {
+        "timestamp": "2025-07-26T22:56:14.367000",
+        "message": "INIT_START Runtime Version: python:3.13.v50\tRuntime Version ARN: arn:aws:lambda:us-east-1::runtime:83a0b29e480e14176225231a6e561282aa7732a24063ebab771b15e4c1a2c71c\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:14.754000",
+        "message": "[INFO]\t2025-07-26T22:56:14.754Z\t\tFound credentials in environment variables.\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:14.952000",
+        "message": "START RequestId: 0ddfcf8e-bd84-41ed-9933-2be0c08803c4 Version: $LATEST\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:15.365000",
+        "message": "END RequestId: 0ddfcf8e-bd84-41ed-9933-2be0c08803c4\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:15.366000",
+        "message": "REPORT RequestId: 0ddfcf8e-bd84-41ed-9933-2be0c08803c4\tDuration: 412.43 ms\tBilled Duration: 413 ms\tMemory Size: 128 MB\tMax Memory Used: 89 MB\tInit Duration: 581.22 ms\t\n"
+      }
+    ],
+    "/aws/lambda/inference": [
+      {
+        "timestamp": "2025-07-26T22:56:15.690000",
+        "message": "INIT_START Runtime Version: python:3.13.v50\tRuntime Version ARN: arn:aws:lambda:us-east-1::runtime:83a0b29e480e14176225231a6e561282aa7732a24063ebab771b15e4c1a2c71c\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:15.996000",
+        "message": "START RequestId: b1f583f1-879e-4fd3-b043-28885f2ea766 Version: $LATEST\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:15.997000",
+        "message": "Processing rank 0 with data None\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:21.122000",
+        "message": "END RequestId: b1f583f1-879e-4fd3-b043-28885f2ea766\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:21.122000",
+        "message": "REPORT RequestId: b1f583f1-879e-4fd3-b043-28885f2ea766\tDuration: 5124.70 ms\tBilled Duration: 5125 ms\tMemory Size: 128 MB\tMax Memory Used: 89 MB\tInit Duration: 302.50 ms\t\n"
+      }
+    ],
+    "/aws/lambda/summarize": [
+      {
+        "timestamp": "2025-07-26T22:56:21.431000",
+        "message": "INIT_START Runtime Version: python:3.13.v48\tRuntime Version ARN: arn:aws:lambda:us-east-1::runtime:f10b100a00b6c2fc7052100b08a13d8c6dc4176c7c01a522d2fb9c948bab31f0\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:21.733000",
+        "message": "START RequestId: 7b9cc23c-6c21-439c-ac79-530b94c33514 Version: $LATEST\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:21.733000",
+        "message": "[INFO]\t2025-07-26T22:56:21.733Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tLooking for files in bucket: cosmicai-data, prefix: results\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:21.933000",
+        "message": "[INFO]\t2025-07-26T22:56:21.933Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tFound credentials in environment variables.\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:24.691000",
+        "message": "[INFO]\t2025-07-26T22:56:24.691Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:24.752000",
+        "message": "[INFO]\t2025-07-26T22:56:24.752Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_10_ws2_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:24.792000",
+        "message": "[INFO]\t2025-07-26T22:56:24.792Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_10_ws2_bs128/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:24.831000",
+        "message": "[INFO]\t2025-07-26T22:56:24.831Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_11_ws3_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:24.893000",
+        "message": "[INFO]\t2025-07-26T22:56:24.892Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_11_ws3_bs8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:24.943000",
+        "message": "[INFO]\t2025-07-26T22:56:24.943Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_11_ws3_bs8/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:24.975000",
+        "message": "[INFO]\t2025-07-26T22:56:24.975Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_12_ws3_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.011000",
+        "message": "[INFO]\t2025-07-26T22:56:25.011Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_12_ws3_bs16/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.051000",
+        "message": "[INFO]\t2025-07-26T22:56:25.051Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_12_ws3_bs16/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.091000",
+        "message": "[INFO]\t2025-07-26T22:56:25.091Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_13_ws3_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.134000",
+        "message": "[INFO]\t2025-07-26T22:56:25.134Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_13_ws3_bs32/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.182000",
+        "message": "[INFO]\t2025-07-26T22:56:25.182Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_13_ws3_bs32/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.239000",
+        "message": "[INFO]\t2025-07-26T22:56:25.239Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_14_ws3_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.271000",
+        "message": "[INFO]\t2025-07-26T22:56:25.271Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_14_ws3_bs64/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.311000",
+        "message": "[INFO]\t2025-07-26T22:56:25.311Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_14_ws3_bs64/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.379000",
+        "message": "[INFO]\t2025-07-26T22:56:25.379Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_15_ws3_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.411000",
+        "message": "[INFO]\t2025-07-26T22:56:25.411Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_15_ws3_bs128/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.453000",
+        "message": "[INFO]\t2025-07-26T22:56:25.452Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_15_ws3_bs128/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.491000",
+        "message": "[INFO]\t2025-07-26T22:56:25.491Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_16_ws4_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.531000",
+        "message": "[INFO]\t2025-07-26T22:56:25.531Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_16_ws4_bs8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.571000",
+        "message": "[INFO]\t2025-07-26T22:56:25.571Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_16_ws4_bs8/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.611000",
+        "message": "[INFO]\t2025-07-26T22:56:25.611Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_16_ws4_bs8/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.660000",
+        "message": "[INFO]\t2025-07-26T22:56:25.660Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_17_ws4_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.692000",
+        "message": "[INFO]\t2025-07-26T22:56:25.692Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_17_ws4_bs16/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.733000",
+        "message": "[INFO]\t2025-07-26T22:56:25.733Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_17_ws4_bs16/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.771000",
+        "message": "[INFO]\t2025-07-26T22:56:25.771Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_17_ws4_bs16/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.814000",
+        "message": "[INFO]\t2025-07-26T22:56:25.814Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_18_ws4_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.861000",
+        "message": "[INFO]\t2025-07-26T22:56:25.861Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_18_ws4_bs32/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.900000",
+        "message": "[INFO]\t2025-07-26T22:56:25.900Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_18_ws4_bs32/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.931000",
+        "message": "[INFO]\t2025-07-26T22:56:25.931Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_18_ws4_bs32/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:25.971000",
+        "message": "[INFO]\t2025-07-26T22:56:25.971Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_19_ws4_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.027000",
+        "message": "[INFO]\t2025-07-26T22:56:26.027Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_19_ws4_bs64/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.056000",
+        "message": "[INFO]\t2025-07-26T22:56:26.056Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_19_ws4_bs64/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.091000",
+        "message": "[INFO]\t2025-07-26T22:56:26.091Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_19_ws4_bs64/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.131000",
+        "message": "[INFO]\t2025-07-26T22:56:26.131Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_1_ws1_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.172000",
+        "message": "[INFO]\t2025-07-26T22:56:26.172Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_20_ws4_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.211000",
+        "message": "[INFO]\t2025-07-26T22:56:26.211Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_20_ws4_bs128/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.251000",
+        "message": "[INFO]\t2025-07-26T22:56:26.251Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_20_ws4_bs128/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.306000",
+        "message": "[INFO]\t2025-07-26T22:56:26.306Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_20_ws4_bs128/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.344000",
+        "message": "[INFO]\t2025-07-26T22:56:26.344Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_2_ws1_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.372000",
+        "message": "[INFO]\t2025-07-26T22:56:26.372Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_3_ws1_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.431000",
+        "message": "[INFO]\t2025-07-26T22:56:26.431Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_4_ws1_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.471000",
+        "message": "[INFO]\t2025-07-26T22:56:26.471Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_5_ws1_bs128/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.517000",
+        "message": "[INFO]\t2025-07-26T22:56:26.516Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_6_ws2_bs8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.570000",
+        "message": "[INFO]\t2025-07-26T22:56:26.570Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_6_ws2_bs8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.611000",
+        "message": "[INFO]\t2025-07-26T22:56:26.611Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_7_ws2_bs16/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.651000",
+        "message": "[INFO]\t2025-07-26T22:56:26.651Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_7_ws2_bs16/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.712000",
+        "message": "[INFO]\t2025-07-26T22:56:26.712Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_8_ws2_bs32/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.751000",
+        "message": "[INFO]\t2025-07-26T22:56:26.751Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_8_ws2_bs32/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.791000",
+        "message": "[INFO]\t2025-07-26T22:56:26.791Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_9_ws2_bs64/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.831000",
+        "message": "[INFO]\t2025-07-26T22:56:26.831Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/test_9_ws2_bs64/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.871000",
+        "message": "[INFO]\t2025-07-26T22:56:26.871Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_1/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.911000",
+        "message": "[INFO]\t2025-07-26T22:56:26.911Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_2/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.951000",
+        "message": "[INFO]\t2025-07-26T22:56:26.951Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_2/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:26.992000",
+        "message": "[INFO]\t2025-07-26T22:56:26.991Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_2/combined_data.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.031000",
+        "message": "[INFO]\t2025-07-26T22:56:27.031Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_4/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.071000",
+        "message": "[INFO]\t2025-07-26T22:56:27.071Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_4/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.111000",
+        "message": "[INFO]\t2025-07-26T22:56:27.111Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_4/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.151000",
+        "message": "[INFO]\t2025-07-26T22:56:27.151Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_4/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.193000",
+        "message": "[INFO]\t2025-07-26T22:56:27.193Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/0.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.237000",
+        "message": "[INFO]\t2025-07-26T22:56:27.236Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/1.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.272000",
+        "message": "[INFO]\t2025-07-26T22:56:27.271Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/2.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.312000",
+        "message": "[INFO]\t2025-07-26T22:56:27.312Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/3.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.351000",
+        "message": "[INFO]\t2025-07-26T22:56:27.351Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/4.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.411000",
+        "message": "[INFO]\t2025-07-26T22:56:27.411Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/5.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.449000",
+        "message": "[INFO]\t2025-07-26T22:56:27.449Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/6.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.522000",
+        "message": "[INFO]\t2025-07-26T22:56:27.522Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tProcessing file: results/world_8/7.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.630000",
+        "message": "[INFO]\t2025-07-26T22:56:27.630Z\t7b9cc23c-6c21-439c-ac79-530b94c33514\tCombined data uploaded to results/combined_data.json\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.653000",
+        "message": "END RequestId: 7b9cc23c-6c21-439c-ac79-530b94c33514\n"
+      },
+      {
+        "timestamp": "2025-07-26T22:56:27.653000",
+        "message": "REPORT RequestId: 7b9cc23c-6c21-439c-ac79-530b94c33514\tDuration: 5918.67 ms\tBilled Duration: 5919 ms\tMemory Size: 128 MB\tMax Memory Used: 88 MB\tInit Duration: 298.59 ms\t\n"
+      }
+    ]
+  }
+}

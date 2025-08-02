@@ -1,0 +1,120 @@
+Step Function Execution Logs
+============================
+Execution: test-1w-16b-small-1753570573
+Team: Team 2 (ID: 7078ea12)
+Start: 2025-07-26 22:56:13.946000+00:00
+End: 2025-07-26 22:56:27.730000+00:00
+Status: SUCCESS
+
+Test Parameters:
+- World Size: 1
+- Batch Size: 16  
+- Data Size: small
+
+Lambda Functions Invoked:
+1. Lambda Invoke -> data-parallel-init2
+2. Model Inference -> inference  
+3. Summarize -> summarize
+
+============================
+CLOUDWATCH LOGS:
+============================
+
+
+============================================================
+/aws/lambda/data-parallel-init2
+============================================================
+[2025-07-26 22:56:14.367] INIT_START Runtime Version: python:3.13.v50	Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:83a0b29e480e14176225231a6e561282aa7732a24063ebab771b15e4c1a2c71c
+[2025-07-26 22:56:14.754] [INFO]	2025-07-26T22:56:14.754Z		Found credentials in environment variables.
+[2025-07-26 22:56:14.952] START RequestId: 0ddfcf8e-bd84-41ed-9933-2be0c08803c4 Version: $LATEST
+[2025-07-26 22:56:15.365] END RequestId: 0ddfcf8e-bd84-41ed-9933-2be0c08803c4
+[2025-07-26 22:56:15.366] REPORT RequestId: 0ddfcf8e-bd84-41ed-9933-2be0c08803c4	Duration: 412.43 ms	Billed Duration: 413 ms	Memory Size: 128 MB	Max Memory Used: 89 MB	Init Duration: 581.22 ms
+
+
+============================================================
+/aws/lambda/inference
+============================================================
+[2025-07-26 22:56:15.690] INIT_START Runtime Version: python:3.13.v50	Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:83a0b29e480e14176225231a6e561282aa7732a24063ebab771b15e4c1a2c71c
+[2025-07-26 22:56:15.996] START RequestId: b1f583f1-879e-4fd3-b043-28885f2ea766 Version: $LATEST
+[2025-07-26 22:56:15.997] Processing rank 0 with data None
+[2025-07-26 22:56:21.122] END RequestId: b1f583f1-879e-4fd3-b043-28885f2ea766
+[2025-07-26 22:56:21.122] REPORT RequestId: b1f583f1-879e-4fd3-b043-28885f2ea766	Duration: 5124.70 ms	Billed Duration: 5125 ms	Memory Size: 128 MB	Max Memory Used: 89 MB	Init Duration: 302.50 ms
+
+
+============================================================
+/aws/lambda/summarize
+============================================================
+[2025-07-26 22:56:21.431] INIT_START Runtime Version: python:3.13.v48	Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:f10b100a00b6c2fc7052100b08a13d8c6dc4176c7c01a522d2fb9c948bab31f0
+[2025-07-26 22:56:21.733] START RequestId: 7b9cc23c-6c21-439c-ac79-530b94c33514 Version: $LATEST
+[2025-07-26 22:56:21.733] [INFO]	2025-07-26T22:56:21.733Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Looking for files in bucket: cosmicai-data, prefix: results
+[2025-07-26 22:56:21.933] [INFO]	2025-07-26T22:56:21.933Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Found credentials in environment variables.
+[2025-07-26 22:56:24.691] [INFO]	2025-07-26T22:56:24.691Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/0.json
+[2025-07-26 22:56:24.752] [INFO]	2025-07-26T22:56:24.752Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_10_ws2_bs128/0.json
+[2025-07-26 22:56:24.792] [INFO]	2025-07-26T22:56:24.792Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_10_ws2_bs128/1.json
+[2025-07-26 22:56:24.831] [INFO]	2025-07-26T22:56:24.831Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_11_ws3_bs8/0.json
+[2025-07-26 22:56:24.893] [INFO]	2025-07-26T22:56:24.892Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_11_ws3_bs8/1.json
+[2025-07-26 22:56:24.943] [INFO]	2025-07-26T22:56:24.943Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_11_ws3_bs8/2.json
+[2025-07-26 22:56:24.975] [INFO]	2025-07-26T22:56:24.975Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_12_ws3_bs16/0.json
+[2025-07-26 22:56:25.011] [INFO]	2025-07-26T22:56:25.011Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_12_ws3_bs16/1.json
+[2025-07-26 22:56:25.051] [INFO]	2025-07-26T22:56:25.051Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_12_ws3_bs16/2.json
+[2025-07-26 22:56:25.091] [INFO]	2025-07-26T22:56:25.091Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_13_ws3_bs32/0.json
+[2025-07-26 22:56:25.134] [INFO]	2025-07-26T22:56:25.134Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_13_ws3_bs32/1.json
+[2025-07-26 22:56:25.182] [INFO]	2025-07-26T22:56:25.182Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_13_ws3_bs32/2.json
+[2025-07-26 22:56:25.239] [INFO]	2025-07-26T22:56:25.239Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_14_ws3_bs64/0.json
+[2025-07-26 22:56:25.271] [INFO]	2025-07-26T22:56:25.271Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_14_ws3_bs64/1.json
+[2025-07-26 22:56:25.311] [INFO]	2025-07-26T22:56:25.311Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_14_ws3_bs64/2.json
+[2025-07-26 22:56:25.379] [INFO]	2025-07-26T22:56:25.379Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_15_ws3_bs128/0.json
+[2025-07-26 22:56:25.411] [INFO]	2025-07-26T22:56:25.411Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_15_ws3_bs128/1.json
+[2025-07-26 22:56:25.453] [INFO]	2025-07-26T22:56:25.452Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_15_ws3_bs128/2.json
+[2025-07-26 22:56:25.491] [INFO]	2025-07-26T22:56:25.491Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_16_ws4_bs8/0.json
+[2025-07-26 22:56:25.531] [INFO]	2025-07-26T22:56:25.531Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_16_ws4_bs8/1.json
+[2025-07-26 22:56:25.571] [INFO]	2025-07-26T22:56:25.571Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_16_ws4_bs8/2.json
+[2025-07-26 22:56:25.611] [INFO]	2025-07-26T22:56:25.611Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_16_ws4_bs8/3.json
+[2025-07-26 22:56:25.660] [INFO]	2025-07-26T22:56:25.660Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_17_ws4_bs16/0.json
+[2025-07-26 22:56:25.692] [INFO]	2025-07-26T22:56:25.692Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_17_ws4_bs16/1.json
+[2025-07-26 22:56:25.733] [INFO]	2025-07-26T22:56:25.733Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_17_ws4_bs16/2.json
+[2025-07-26 22:56:25.771] [INFO]	2025-07-26T22:56:25.771Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_17_ws4_bs16/3.json
+[2025-07-26 22:56:25.814] [INFO]	2025-07-26T22:56:25.814Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_18_ws4_bs32/0.json
+[2025-07-26 22:56:25.861] [INFO]	2025-07-26T22:56:25.861Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_18_ws4_bs32/1.json
+[2025-07-26 22:56:25.900] [INFO]	2025-07-26T22:56:25.900Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_18_ws4_bs32/2.json
+[2025-07-26 22:56:25.931] [INFO]	2025-07-26T22:56:25.931Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_18_ws4_bs32/3.json
+[2025-07-26 22:56:25.971] [INFO]	2025-07-26T22:56:25.971Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_19_ws4_bs64/0.json
+[2025-07-26 22:56:26.027] [INFO]	2025-07-26T22:56:26.027Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_19_ws4_bs64/1.json
+[2025-07-26 22:56:26.056] [INFO]	2025-07-26T22:56:26.056Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_19_ws4_bs64/2.json
+[2025-07-26 22:56:26.091] [INFO]	2025-07-26T22:56:26.091Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_19_ws4_bs64/3.json
+[2025-07-26 22:56:26.131] [INFO]	2025-07-26T22:56:26.131Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_1_ws1_bs8/0.json
+[2025-07-26 22:56:26.172] [INFO]	2025-07-26T22:56:26.172Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_20_ws4_bs128/0.json
+[2025-07-26 22:56:26.211] [INFO]	2025-07-26T22:56:26.211Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_20_ws4_bs128/1.json
+[2025-07-26 22:56:26.251] [INFO]	2025-07-26T22:56:26.251Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_20_ws4_bs128/2.json
+[2025-07-26 22:56:26.306] [INFO]	2025-07-26T22:56:26.306Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_20_ws4_bs128/3.json
+[2025-07-26 22:56:26.344] [INFO]	2025-07-26T22:56:26.344Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_2_ws1_bs16/0.json
+[2025-07-26 22:56:26.372] [INFO]	2025-07-26T22:56:26.372Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_3_ws1_bs32/0.json
+[2025-07-26 22:56:26.431] [INFO]	2025-07-26T22:56:26.431Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_4_ws1_bs64/0.json
+[2025-07-26 22:56:26.471] [INFO]	2025-07-26T22:56:26.471Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_5_ws1_bs128/0.json
+[2025-07-26 22:56:26.517] [INFO]	2025-07-26T22:56:26.516Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_6_ws2_bs8/0.json
+[2025-07-26 22:56:26.570] [INFO]	2025-07-26T22:56:26.570Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_6_ws2_bs8/1.json
+[2025-07-26 22:56:26.611] [INFO]	2025-07-26T22:56:26.611Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_7_ws2_bs16/0.json
+[2025-07-26 22:56:26.651] [INFO]	2025-07-26T22:56:26.651Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_7_ws2_bs16/1.json
+[2025-07-26 22:56:26.712] [INFO]	2025-07-26T22:56:26.712Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_8_ws2_bs32/0.json
+[2025-07-26 22:56:26.751] [INFO]	2025-07-26T22:56:26.751Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_8_ws2_bs32/1.json
+[2025-07-26 22:56:26.791] [INFO]	2025-07-26T22:56:26.791Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_9_ws2_bs64/0.json
+[2025-07-26 22:56:26.831] [INFO]	2025-07-26T22:56:26.831Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/test_9_ws2_bs64/1.json
+[2025-07-26 22:56:26.871] [INFO]	2025-07-26T22:56:26.871Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_1/0.json
+[2025-07-26 22:56:26.911] [INFO]	2025-07-26T22:56:26.911Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_2/0.json
+[2025-07-26 22:56:26.951] [INFO]	2025-07-26T22:56:26.951Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_2/1.json
+[2025-07-26 22:56:26.992] [INFO]	2025-07-26T22:56:26.991Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_2/combined_data.json
+[2025-07-26 22:56:27.031] [INFO]	2025-07-26T22:56:27.031Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_4/0.json
+[2025-07-26 22:56:27.071] [INFO]	2025-07-26T22:56:27.071Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_4/1.json
+[2025-07-26 22:56:27.111] [INFO]	2025-07-26T22:56:27.111Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_4/2.json
+[2025-07-26 22:56:27.151] [INFO]	2025-07-26T22:56:27.151Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_4/3.json
+[2025-07-26 22:56:27.193] [INFO]	2025-07-26T22:56:27.193Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/0.json
+[2025-07-26 22:56:27.237] [INFO]	2025-07-26T22:56:27.236Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/1.json
+[2025-07-26 22:56:27.272] [INFO]	2025-07-26T22:56:27.271Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/2.json
+[2025-07-26 22:56:27.312] [INFO]	2025-07-26T22:56:27.312Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/3.json
+[2025-07-26 22:56:27.351] [INFO]	2025-07-26T22:56:27.351Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/4.json
+[2025-07-26 22:56:27.411] [INFO]	2025-07-26T22:56:27.411Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/5.json
+[2025-07-26 22:56:27.449] [INFO]	2025-07-26T22:56:27.449Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/6.json
+[2025-07-26 22:56:27.522] [INFO]	2025-07-26T22:56:27.522Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Processing file: results/world_8/7.json
+[2025-07-26 22:56:27.630] [INFO]	2025-07-26T22:56:27.630Z	7b9cc23c-6c21-439c-ac79-530b94c33514	Combined data uploaded to results/combined_data.json
+[2025-07-26 22:56:27.653] END RequestId: 7b9cc23c-6c21-439c-ac79-530b94c33514
+[2025-07-26 22:56:27.653] REPORT RequestId: 7b9cc23c-6c21-439c-ac79-530b94c33514	Duration: 5918.67 ms	Billed Duration: 5919 ms	Memory Size: 128 MB	Max Memory Used: 88 MB	Init Duration: 298.59 ms

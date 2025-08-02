@@ -1,0 +1,115 @@
+Step Function Execution Logs
+============================
+Execution: test-1w-16b-small-1753569539
+Team: Team 2 (ID: 7078ea12)
+Start: 2025-07-26 22:38:59.188000+00:00
+End: 2025-07-26 22:39:06.376000+00:00
+Status: SUCCESS
+
+Test Parameters:
+- World Size: 1
+- Batch Size: 16  
+- Data Size: small
+
+Lambda Functions Invoked:
+1. Lambda Invoke -> data-parallel-init2
+2. Model Inference -> inference  
+3. Summarize -> summarize
+
+============================
+CLOUDWATCH LOGS:
+============================
+
+
+============================================================
+/aws/lambda/data-parallel-init2
+============================================================
+[2025-07-26 22:38:59.397] START RequestId: 686111db-7342-4757-9e43-4f47e857d39a Version: $LATEST
+[2025-07-26 22:38:59.736] END RequestId: 686111db-7342-4757-9e43-4f47e857d39a
+[2025-07-26 22:38:59.736] REPORT RequestId: 686111db-7342-4757-9e43-4f47e857d39a	Duration: 337.14 ms	Billed Duration: 338 ms	Memory Size: 128 MB	Max Memory Used: 91 MB
+
+
+============================================================
+/aws/lambda/inference
+============================================================
+[2025-07-26 22:38:59.889] START RequestId: bf4021a1-3165-408f-9889-a1c0a8b7156b Version: $LATEST
+[2025-07-26 22:38:59.890] Processing rank 0 with data None
+[2025-07-26 22:39:02.237] END RequestId: bf4021a1-3165-408f-9889-a1c0a8b7156b
+[2025-07-26 22:39:02.237] REPORT RequestId: bf4021a1-3165-408f-9889-a1c0a8b7156b	Duration: 2346.27 ms	Billed Duration: 2347 ms	Memory Size: 128 MB	Max Memory Used: 90 MB
+
+
+============================================================
+/aws/lambda/summarize
+============================================================
+[2025-07-26 22:39:02.396] START RequestId: 42acd135-0a62-4b49-89dd-022a7c42e635 Version: $LATEST
+[2025-07-26 22:39:02.396] [INFO]	2025-07-26T22:39:02.396Z	42acd135-0a62-4b49-89dd-022a7c42e635	Looking for files in bucket: cosmicai-data, prefix: results
+[2025-07-26 22:39:02.815] [INFO]	2025-07-26T22:39:02.815Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/0.json
+[2025-07-26 22:39:02.894] [INFO]	2025-07-26T22:39:02.894Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_10_ws2_bs128/0.json
+[2025-07-26 22:39:02.934] [INFO]	2025-07-26T22:39:02.934Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_10_ws2_bs128/1.json
+[2025-07-26 22:39:02.987] [INFO]	2025-07-26T22:39:02.987Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_11_ws3_bs8/0.json
+[2025-07-26 22:39:03.014] [INFO]	2025-07-26T22:39:03.014Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_11_ws3_bs8/1.json
+[2025-07-26 22:39:03.054] [INFO]	2025-07-26T22:39:03.054Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_11_ws3_bs8/2.json
+[2025-07-26 22:39:03.076] [INFO]	2025-07-26T22:39:03.076Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_12_ws3_bs16/0.json
+[2025-07-26 22:39:03.198] [INFO]	2025-07-26T22:39:03.198Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_12_ws3_bs16/1.json
+[2025-07-26 22:39:03.218] [INFO]	2025-07-26T22:39:03.218Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_12_ws3_bs16/2.json
+[2025-07-26 22:39:03.256] [INFO]	2025-07-26T22:39:03.256Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_13_ws3_bs32/0.json
+[2025-07-26 22:39:03.336] [INFO]	2025-07-26T22:39:03.336Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_13_ws3_bs32/1.json
+[2025-07-26 22:39:03.401] [INFO]	2025-07-26T22:39:03.401Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_13_ws3_bs32/2.json
+[2025-07-26 22:39:03.436] [INFO]	2025-07-26T22:39:03.435Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_14_ws3_bs64/0.json
+[2025-07-26 22:39:03.536] [INFO]	2025-07-26T22:39:03.536Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_14_ws3_bs64/1.json
+[2025-07-26 22:39:03.585] [INFO]	2025-07-26T22:39:03.585Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_14_ws3_bs64/2.json
+[2025-07-26 22:39:03.660] [INFO]	2025-07-26T22:39:03.660Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_15_ws3_bs128/0.json
+[2025-07-26 22:39:03.696] [INFO]	2025-07-26T22:39:03.696Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_15_ws3_bs128/1.json
+[2025-07-26 22:39:03.761] [INFO]	2025-07-26T22:39:03.761Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_15_ws3_bs128/2.json
+[2025-07-26 22:39:03.792] [INFO]	2025-07-26T22:39:03.792Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_16_ws4_bs8/0.json
+[2025-07-26 22:39:03.864] [INFO]	2025-07-26T22:39:03.864Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_16_ws4_bs8/1.json
+[2025-07-26 22:39:03.907] [INFO]	2025-07-26T22:39:03.907Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_16_ws4_bs8/2.json
+[2025-07-26 22:39:03.943] [INFO]	2025-07-26T22:39:03.943Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_16_ws4_bs8/3.json
+[2025-07-26 22:39:04.014] [INFO]	2025-07-26T22:39:04.014Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_17_ws4_bs16/0.json
+[2025-07-26 22:39:04.054] [INFO]	2025-07-26T22:39:04.054Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_17_ws4_bs16/1.json
+[2025-07-26 22:39:04.094] [INFO]	2025-07-26T22:39:04.094Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_17_ws4_bs16/2.json
+[2025-07-26 22:39:04.124] [INFO]	2025-07-26T22:39:04.124Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_17_ws4_bs16/3.json
+[2025-07-26 22:39:04.221] [INFO]	2025-07-26T22:39:04.221Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_18_ws4_bs32/0.json
+[2025-07-26 22:39:04.254] [INFO]	2025-07-26T22:39:04.254Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_18_ws4_bs32/1.json
+[2025-07-26 22:39:04.294] [INFO]	2025-07-26T22:39:04.294Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_18_ws4_bs32/2.json
+[2025-07-26 22:39:04.351] [INFO]	2025-07-26T22:39:04.351Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_18_ws4_bs32/3.json
+[2025-07-26 22:39:04.403] [INFO]	2025-07-26T22:39:04.403Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_19_ws4_bs64/0.json
+[2025-07-26 22:39:04.436] [INFO]	2025-07-26T22:39:04.436Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_19_ws4_bs64/1.json
+[2025-07-26 22:39:04.483] [INFO]	2025-07-26T22:39:04.483Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_19_ws4_bs64/2.json
+[2025-07-26 22:39:04.516] [INFO]	2025-07-26T22:39:04.516Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_19_ws4_bs64/3.json
+[2025-07-26 22:39:04.567] [INFO]	2025-07-26T22:39:04.566Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_1_ws1_bs8/0.json
+[2025-07-26 22:39:04.594] [INFO]	2025-07-26T22:39:04.594Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_20_ws4_bs128/0.json
+[2025-07-26 22:39:04.634] [INFO]	2025-07-26T22:39:04.634Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_20_ws4_bs128/1.json
+[2025-07-26 22:39:04.674] [INFO]	2025-07-26T22:39:04.674Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_20_ws4_bs128/2.json
+[2025-07-26 22:39:04.714] [INFO]	2025-07-26T22:39:04.714Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_20_ws4_bs128/3.json
+[2025-07-26 22:39:04.754] [INFO]	2025-07-26T22:39:04.754Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_2_ws1_bs16/0.json
+[2025-07-26 22:39:04.794] [INFO]	2025-07-26T22:39:04.794Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_3_ws1_bs32/0.json
+[2025-07-26 22:39:04.834] [INFO]	2025-07-26T22:39:04.834Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_4_ws1_bs64/0.json
+[2025-07-26 22:39:04.874] [INFO]	2025-07-26T22:39:04.874Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_5_ws1_bs128/0.json
+[2025-07-26 22:39:04.914] [INFO]	2025-07-26T22:39:04.914Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_6_ws2_bs8/0.json
+[2025-07-26 22:39:04.957] [INFO]	2025-07-26T22:39:04.957Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_6_ws2_bs8/1.json
+[2025-07-26 22:39:04.998] [INFO]	2025-07-26T22:39:04.998Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_7_ws2_bs16/0.json
+[2025-07-26 22:39:05.034] [INFO]	2025-07-26T22:39:05.034Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_7_ws2_bs16/1.json
+[2025-07-26 22:39:05.074] [INFO]	2025-07-26T22:39:05.074Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_8_ws2_bs32/0.json
+[2025-07-26 22:39:05.095] [INFO]	2025-07-26T22:39:05.095Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_8_ws2_bs32/1.json
+[2025-07-26 22:39:05.134] [INFO]	2025-07-26T22:39:05.134Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_9_ws2_bs64/0.json
+[2025-07-26 22:39:05.193] [INFO]	2025-07-26T22:39:05.193Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/test_9_ws2_bs64/1.json
+[2025-07-26 22:39:05.248] [INFO]	2025-07-26T22:39:05.248Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_1/0.json
+[2025-07-26 22:39:05.283] [INFO]	2025-07-26T22:39:05.283Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_2/0.json
+[2025-07-26 22:39:05.334] [INFO]	2025-07-26T22:39:05.334Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_2/1.json
+[2025-07-26 22:39:05.374] [INFO]	2025-07-26T22:39:05.374Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_2/combined_data.json
+[2025-07-26 22:39:05.412] [INFO]	2025-07-26T22:39:05.412Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_4/0.json
+[2025-07-26 22:39:05.454] [INFO]	2025-07-26T22:39:05.454Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_4/1.json
+[2025-07-26 22:39:05.515] [INFO]	2025-07-26T22:39:05.515Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_4/2.json
+[2025-07-26 22:39:05.558] [INFO]	2025-07-26T22:39:05.558Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_4/3.json
+[2025-07-26 22:39:05.595] [INFO]	2025-07-26T22:39:05.595Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/0.json
+[2025-07-26 22:39:05.634] [INFO]	2025-07-26T22:39:05.634Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/1.json
+[2025-07-26 22:39:05.655] [INFO]	2025-07-26T22:39:05.654Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/2.json
+[2025-07-26 22:39:05.732] [INFO]	2025-07-26T22:39:05.732Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/3.json
+[2025-07-26 22:39:05.823] [INFO]	2025-07-26T22:39:05.823Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/4.json
+[2025-07-26 22:39:05.854] [INFO]	2025-07-26T22:39:05.854Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/5.json
+[2025-07-26 22:39:05.902] [INFO]	2025-07-26T22:39:05.902Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/6.json
+[2025-07-26 22:39:05.942] [INFO]	2025-07-26T22:39:05.942Z	42acd135-0a62-4b49-89dd-022a7c42e635	Processing file: results/world_8/7.json
+[2025-07-26 22:39:06.274] [INFO]	2025-07-26T22:39:06.274Z	42acd135-0a62-4b49-89dd-022a7c42e635	Combined data uploaded to results/combined_data.json
+[2025-07-26 22:39:06.295] END RequestId: 42acd135-0a62-4b49-89dd-022a7c42e635
+[2025-07-26 22:39:06.295] REPORT RequestId: 42acd135-0a62-4b49-89dd-022a7c42e635	Duration: 3898.23 ms	Billed Duration: 3899 ms	Memory Size: 128 MB	Max Memory Used: 88 MB

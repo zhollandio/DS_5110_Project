@@ -1,0 +1,8 @@
+{
+  "name": "micro",
+  "samples": 100,
+  "optimal_workers": 1,
+  "estimated_size_mb": 8,
+  "optimization_applied": true,
+  "created_timestamp": "2025-07-30T19:14:12.425227"
+}
