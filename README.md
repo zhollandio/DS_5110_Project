@@ -24,28 +24,259 @@
                                  ★  ·  ·  ·  ★  ·  ·  ·  ★
 ```
 
+<details>
+<summary><strong> Project Overview: *Serverless Scalable Inference for Astronomical Redshift Detection*</strong></summary>
 
 
-**Authors**:
-Zachary Holland & Devlin Bridges (Group 2)
+### Introduction
 
-
-## Project Overview
-
-This project applies advanced AI infrastructure—including Serverless Data Engineering with Fully Managed Infrastructure (FMI) and cutting-edge models like Vision Transformers and Astro MAE, to process large-scale astronomy image datasets. The methodology follows a three-stage approach, aiming to optimize performance while minimizing computational cost.
-
-Key techniques explored include:
-- Data cropping and parameter tuning
-- Load balancing and communication overhead mitigation
-- Distributed and serverless inference using AWS Lambda and Step Functions
-
-The broader goal of the project is to prototype scalable pipelines for redshift detection and image analysis at scale, using real astronomical data. Students are encouraged to explore trade-offs between batch sizes, world sizes (parallel workers), and dataset chunk sizes to improve both throughput and cost-efficiency.
+This project explores a cutting-edge approach to large-scale astronomical image analysis using fully serverless AI infrastructure. By combining Vision Transformers (ViTs), Masked Autoencoders (Astro MAE), and AWS Lambda-based distributed computing, we prototyped a scalable, low-cost system for redshift inference from multi-band space telescope images. The architecture emphasizes cost-efficiency, elasticity, and reproducibility, making it suitable for research pipelines and near-real-time deployments in observational astronomy.
 
 > _Inspired by the lecture: “Optimizing AI for Astronomy: Redshift Detection and Scalable Image Processing”_
 
+### Team Members (Group 2 – DS 5110: AI Infrastructure)
+
+- Zachary Holland  
+- Devlin Bridges  
+
 ---
 
+### Problem Statement
 
+Modern astronomy generates terabytes of high-resolution sky imagery, often requiring real-time or near-real-time processing for tasks like anomaly detection or redshift estimation. Traditional high-performance computing (HPC) methods are costly, inflexible, and hard to scale dynamically. This project addresses:
+
+- How can we perform accurate, high-throughput redshift detection at scale using low-cost, serverless infrastructure?
+- What are the trade-offs between latency, cost, and accuracy in distributed inference?
+- Can Function-as-a-Service (FaaS) models replace traditional GPU-heavy HPC for certain ML inference workloads in astronomy?
+
+---
+
+### Data Details
+
+- **Dataset Sources**:
+  - **Primary Dataset** (Full-scale): `total.pt` from Google Drive  
+    [Download Link](https://drive.google.com/drive/folders/18vX8-6LcGOmRyTbkJwMDOgQY15nGWves)
+  - **Test Subset**: `Inference.pt` – a small pre-split PyTorch TensorDataset for initial validation and benchmarking
+
+- **Data Format**: PyTorch TensorDataset  
+- **Sample Shape**: `[64, 64, 5]` – each sample is a multi-band astronomical image
+
+- **Dataset Sizes**:
+  - Small: 250 samples
+  - Medium: 626 samples
+  - Large: 1253 samples
+
+- **Processing Pipeline**:
+  1. Download the full dataset (`total.pt`) from the Google Drive link above.
+  2. Use the provided Python utility `split_data.py` to divide the data into smaller partitions, typically around 10MB each.
+     ```bash
+     python split_data.py --input total.pt --chunk_size 10
+     ```
+  3. Upload the resulting chunked `.pt` files into your S3 bucket under a relevant path (e.g., `datasets/10MB_chunks/`).
+
+- **S3 Storage Location**:  
+  All processed datasets and inference subsets should be uploaded to the designated team bucket:  
+  `team2-cosmical-7078ea12`, structured by data size and chunk configuration.
+
+- **Purpose of Subsets**:
+  - `Inference.pt`: Used for early-stage inference tests, CPU benchmarking, and local debugging
+  - Partitioned chunks from `total.pt`: Used in full-scale, distributed inference workflows across AWS Lambda and Step Functions
+
+---
+
+### Experiment Process
+
+<img width="674" height="657" alt="4e884ac870513108a1e3882f47bfb5f9" src="https://github.com/user-attachments/assets/53cc86a0-eb8e-48bd-b7c1-43f9d3ce85bf" />
+
+
+#### 1. Serverless Infrastructure Setup
+
+- AWS Step Functions used to orchestrate distributed workflows
+- AWS Lambda used to run inference in parallel with varying world sizes (1–8 workers)
+- A custom TCP-based Rendezvous Server deployed on ECS Fargate for synchronization of distributed workers
+
+#### 2. Model Inference
+
+- Inference conducted using pre-trained Vision Transformers fine-tuned on astronomy images
+- PyTorch used for local and Lambda-compatible inference pipelines
+- Integrated profiling tools for memory, speed, and throughput logging
+
+#### 3. Benchmarking and Optimization
+
+- Tested 20+ configurations across combinations of:
+  - World Size (1, 2, 4, 8)
+  - Batch Size (1 to 128)
+  - Data Size (Small, Medium, Large)
+- Compared local CPU inference with Lambda-distributed inference
+- Conducted cost optimization sweeps varying:
+  - Worker count
+  - Batch size
+  - Chunk size (MB per Lambda)
+
+---
+
+### Results
+
+#### Performance Metrics
+
+| Configuration        | Runtime (s) | Throughput (records/sec) | Cost (USD)   |
+|----------------------|-------------|---------------------------|--------------|
+| Lambda, W=4, B=128   | 6.40        | 71.42                     | $0.000013    |
+| Local, B=1           | 112.79      | 1.82                      | $0.011630    |
+
+- Best Throughput: 71.42 records/sec (Lambda, Batch 128)
+- Best Accuracy: R² = 0.974674 across all batch sizes
+- Best Cost Efficiency: 99.9% reduction using Lambda compared to local CPU
+- Stable memory usage: ~24–25 GB on local CPU, 128 MB per Lambda function
+- Massive speedups: Up to 16.7× faster (Batch 1, Lambda vs. local)
+
+#### Inference Benchmarking on `Inference.pt` (Local CPU)
+
+| Batch Size | Total Time (s) | Throughput (bps) | Time/Batch (s) | Num Batches | R² Score | MAE     | MSE      | Bias     | Precision | CPU Mem (MB) | Est. Cost (USD) |
+|------------|----------------|------------------|----------------|-------------|----------|---------|----------|----------|-----------|---------------|-----------------|
+| 1          | 112.79         | 1.82M            | 0.09001        | 1253        | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 24149.78      | 0.011630        |
+| 2          | 60.77          | 3.38M            | 0.09693        | 627         | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 25377.38      | 0.006266        |
+| 4          | 36.25          | 5.67M            | 0.11546        | 314         | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 25226.69      | 0.003738        |
+| 8          | 20.96          | 9.82M            | 0.13348        | 157         | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 25143.06      | 0.002161        |
+| 16         | 13.98          | 14.71M           | 0.17699        | 79          | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 25126.06      | 0.001442        |
+| 32         | 10.32          | 19.93M           | 0.25806        | 40          | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 25182.75      | 0.001064        |
+| 64         | 8.43           | 24.41M           | 0.42130        | 20          | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 25175.41      | 0.000869        |
+| 128        | 7.21           | 28.53M           | 0.72094        | 10          | 0.974674 | 0.01252 | 0.000297 | 0.002024 | 0.011136  | 25215.61      | 0.000743        |
+----
+<img width="1321" height="1078" alt="a1f8bd563b05cd0ba0671d75f450c2b5" src="https://github.com/user-attachments/assets/455d71a0-f27d-4b5d-b8c2-9b2d8b7674b1" />
+
+---
+
+#### Final Project: Optimization Results Tables
+
+**Quick Test Results**
+
+| config_id | estimated_cost | execution_time | success |
+|-----------|----------------|----------------|---------|
+| unknown   | 0.4813         | 164.4846       | True    |
+| unknown   | 1.2032         | 148.9660       | True    |
+| unknown   | 0.9024         | 145.6530       | True    |
+| unknown   | 0.9746         | 183.4930       | True    |
+| unknown   | 0.7821         | 186.6713       | True    |
+
+**Optimization Results Summary**
+
+##### World Size Optimization
+
+| World Size | Cost (USD) |
+|------------|------------|
+| 65         | 0.3911     |
+| 80         | 0.4813     |
+| 100        | 0.6016     |
+
+##### Batch Size Optimization
+
+| Batch Size | Cost (USD) |
+|------------|------------|
+| 64         | 0.3008     |
+| 128        | 0.6016     |
+| 192        | 0.9024     |
+
+##### Chunk Size Optimization
+
+| Chunk Size | Cost (USD) |
+|------------|------------|
+| 50MB       | 0.6016     |
+| 75MB       | 0.9024     |
+| 100MB      | 1.2032     |
+
+**Overall Optimal Configuration**
+
+- Batch Size: 64  
+- Cost: $0.3008  
+- Time: 0.2s  
+- Phase: batch_size_optimization
+
+---
+
+**Cost Savings Projection**
+
+| Usage Scenario           | Monthly Savings | Yearly Savings | Savings (%) |
+|--------------------------|------------------|----------------|--------------|
+| Daily (30 runs/month)    | $63.17           | $758.02        | 87.5%        |
+| Weekly (4 runs/month)    | $8.42            | $101.07        | 87.5%        |
+| Twice per week (8 runs)  | $16.84           | $202.14        | 87.5%        |
+| Monthly (1 run/month)    | $2.11            | $25.27         | 87.5%        |
+
+**Production Deployment Configurations**
+
+| Configuration         | Workers | Batch Size | Data Prefix             | Result Path                            |
+|------------------------|---------|------------|--------------------------|-----------------------------------------|
+| Optimal Configuration  | 100     | 64         | datasets/150MB_chunks    | results/production/config_a_optimal     |
+| Conservative Config    | 110     | 64         | datasets/100MB_chunks    | results/production/config_b_conservative|
+| Baseline Configuration | 130     | 128        | datasets/100MB_chunks    | results/production/config_c_baseline    |
+
+
+<img width="1533" height="986" alt="ca57b40495d48628ac8528045ec56b2c" src="https://github.com/user-attachments/assets/850b2c0b-8b62-437b-9212-0daa81944808" />
+
+---
+
+### How to Set Up and Replicate the Project
+
+#### Cloud Prerequisites
+
+- AWS Account with permissions for:
+  - Lambda
+  - Step Functions
+  - ECS Fargate
+  - S3
+  - CloudWatch
+
+#### Infrastructure Setup Steps
+
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/UVA-MLSys/AI-for-Astronomy.git
+   ```
+
+2. **Upload Scripts and Models to S3**
+   - Upload the inference script and model checkpoints to `team2-cosmical-7078ea12`
+   - Place datasets in `/datasets/{small, medium, large}` or `/datasets/10MB_chunks/`
+
+3. **Deploy Rendezvous Server**
+   - Use ECS Fargate with task `rendezvous-tcpunch-fargate-task`
+   - Expose TCP port 10000 via Route 53 DNS:
+     ```
+     rendezvous.uva-ds5110.com:10000
+     ```
+
+4. **Launch Step Function**
+   - Use ARN: `arn:aws:states:us-east-1:211125778552:stateMachine:team2-COSMIC-AI-7078ea12`
+   - Modify payload to configure world size, batch size, and dataset path
+   ```json
+   {
+     "bucket": "team2-cosmical-7078ea12",
+     "world_size": 4,
+     "batch_size": 128,
+     "data_prefix": "datasets/medium",
+     "rendezvous_endpoint": "rendezvous.uva-ds5110.com:10000",
+     "fmi_enabled": true
+   }
+   ```
+
+5. **Monitor Execution**
+   - Logs available in CloudWatch
+   - Output results uploaded to S3: `/results/combined_data.json`
+
+---
+
+### Replication Checklist
+
+- Clone repo and install Python deps (for local testing)
+- Upload models and scripts to S3
+- Deploy Lambda functions (128MB, Python 3.13)
+- Launch and monitor Step Function runs
+- Confirm TCP server connectivity from Lambda
+- Analyze CloudWatch logs and `/results/` output
+
+
+
+</details>
 
 
 <details>
