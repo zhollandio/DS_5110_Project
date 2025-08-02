@@ -714,3 +714,218 @@ World Size 8: 9.8%
 
 </details>
 
+<details>
+<summary><strong>Final Project: Anomaly Detection Cost Optimization</strong></summary>
+
+
+This notebook implements a comprehensive optimization pipeline for a serverless anomaly detection system using AWS Lambda. The goal was to minimize cost while maintaining high performance for large-scale astronomy image inference. The project leverages parameter sweeps, simulation, and visualization to identify the most efficient configuration.
+
+### Authors
+
+Zach Holland & Devlin Bridges (Team 2)
+
+---
+
+### Optimization Pipeline Components
+
+1. Setup and Configuration
+   **Purpose:** Establish AWS clients, set simulation mode, and define baseline config
+   **Key Config Parameters:**
+
+* Bucket: team2-cosmical-7078ea12
+* File Limit (World Size): 130
+* Batch Size: 128
+* Chunk Size: 100MB
+* Lambda Function: `inference`
+* Region: us-east-1
+* Simulation Mode: True (toggled for real tests)
+
+2. Quick Manual Tests
+   **Purpose:** Evaluate performance and cost across 5 predefined configurations
+   **Test Dimensions:**
+
+* World Sizes: 80–130
+* Batch Sizes: 128–256
+* Chunk Sizes: 100MB–150MB
+
+**Quick Test Results:**
+
+| config\_id | estimated\_cost | execution\_time | success |
+| ---------- | --------------- | --------------- | ------- |
+| unknown    | 0.4813          | 164.4846        | True    |
+| unknown    | 1.2032          | 148.9660        | True    |
+| unknown    | 0.9024          | 145.6530        | True    |
+| unknown    | 0.9746          | 183.4930        | True    |
+| unknown    | 0.7821          | 186.6713        | True    |
+
+<img width="1000" height="640" alt="571a9a6b2973e3b10e663cd91f30b2a5" src="https://github.com/user-attachments/assets/812bff4a-8598-48c5-a903-a1e9dccb7774" />
+
+
+
+**Quick Test Recommendations:**
+
+* Lowest Cost: `fewer_workers` (\$0.4813)
+* Fastest: `larger_chunks` (145.7s)
+* Most Efficient: `fewer_workers` (\$0.1756/min)
+
+3. Automated Optimization Suite
+   **Purpose:** Run systematic parameter sweeps across 3 phases
+   **Phases:**
+
+* **Phase 1:** World Size – \[65, 80, 100, 130, 160, 200]
+* **Phase 2:** Batch Size – \[64, 128, 192, 256, 384, 512]
+* **Phase 3:** Chunk Size – \[50MB, 75MB, 100MB, 150MB, 200MB]
+  **Total Tests:** 17
+  **Execution Mode:** Mixed (Simulated and Real Lambda)
+
+---
+
+### Optimization Results Analysis
+
+```
+OPTIMIZATION RESULTS ANALYSIS
+==================================================
+World Size Optimization:
+ Winner: {'world_size': 65}
+ Cost: $0.3911
+ Time: 0.2s
+ Top 3 by cost:
+ 1. {'world_size': 65} - $0.3911
+ 2. {'world_size': 80} - $0.4813
+ 3. {'world_size': 100} - $0.6016
+
+Batch Size Optimization:
+ Winner: {'batch_size': 64}
+ Cost: $0.3008
+ Time: 0.2s
+ Top 3 by cost:
+ 1. {'batch_size': 64} - $0.3008
+ 2. {'batch_size': 128} - $0.6016
+ 3. {'batch_size': 192} - $0.9024
+
+Chunk Size Optimization:
+ Winner: {'chunk_size': '50MB'}
+ Cost: $0.6016
+ Time: 0.2s
+ Top 3 by cost:
+ 1. {'chunk_size': '50MB'} - $0.6016
+ 2. {'chunk_size': '75MB'} - $0.9024
+ 3. {'chunk_size': '100MB'} - $1.2032
+
+OVERALL OPTIMAL CONFIGURATION:
+ Config: {'batch_size': 64}
+ Cost: $0.3008
+ Time: 0.2s
+ Phase: batch_size_optimization
+
+POTENTIAL SAVINGS:
+ Current (worst case): $2.4064
+ Optimized: $0.3008
+ Savings: $2.1056 (87.5%)
+
+```
+
+<img width="1510" height="991" alt="ccf9960d3da0a7a32f6a8a6d0df4ae80" src="https://github.com/user-attachments/assets/cd1d0ba9-03c2-4a7e-b158-e68ed2317e7b" />
+
+---
+
+### Cost Savings Projection
+
+```
+COST SAVINGS PROJECTION
+========================================
+Baseline cost per run: $2.4064
+Optimized cost per run: $0.3008
+Savings per run: $2.1056
+
+Daily usage (30 runs/month):
+ Monthly savings: $63.17
+ Yearly savings: $758.02
+ Savings percentage: 87.5%
+
+Weekly usage (4 runs/month):
+ Monthly savings: $8.42
+ Yearly savings: $101.07
+ Savings percentage: 87.5%
+
+Twice per week usage (8 runs/month):
+ Monthly savings: $16.84
+ Yearly savings: $202.14
+ Savings percentage: 87.5%
+
+Monthly usage (1 runs/month):
+ Monthly savings: $2.11
+ Yearly savings: $25.27
+ Savings percentage: 87.5%
+```
+
+---
+
+### Production Deployment Configurations
+
+```
+PRODUCTION DEPLOYMENT CONFIGURATIONS
+==================================================
+Optimal Configuration:
+ Workers: 100
+ Batch Size: 64
+ Data Prefix: datasets/150MB_chunks
+ Result Path: results/production/config_a_optimal
+
+Conservative Configuration:
+ Workers: 110
+ Batch Size: 64
+ Data Prefix: datasets/100MB_chunks
+ Result Path: results/production/config_b_conservative
+
+Baseline Configuration:
+ Workers: 130
+ Batch Size: 128
+ Data Prefix: datasets/100MB_chunks
+ Result Path: results/production/config_c_baseline
+```
+
+---
+
+### Explanation of Results & Conclusions
+
+**Summary:**
+The project successfully demonstrated that significant cost savings, up to 87.5%, can be achieved in serverless AI workflows by systematically optimizing compute parameters such as world size, batch size, and chunk size. Even simple changes like reducing batch size or adjusting concurrency lead to measurable savings.
+
+**Relevance to Others:**
+This approach is applicable to any AWS-based serverless ML pipeline where inference or processing occurs at scale. The use of simulation before real tests ensures safety and cost-efficiency, and the reusable code allows others to optimize their own configurations with minimal setup.
+
+**How Others Can Use This:**
+
+* Clone the optimization suite for their own Lambda-based inference workloads
+* Apply similar parameter sweep logic to batch processing, NLP, or even ETL jobs
+* Integrate CloudWatch metrics and alerts as part of MLOps/DevOps workflows
+
+**Future Improvements:**
+
+* Integrate real-time feedback loops to adjust parameters dynamically
+* Expand optimization dimensions (e.g., memory allocation, timeout values)
+* Include GPU-based Lambda layers for accelerated AI workloads
+* Automate S3 data versioning for historical comparison
+* Add a front-end dashboard to visualize ongoing cost/performance metrics
+
+---
+
+### Sample Optimal Configuration JSON
+
+```json
+{
+  "bucket": "team2-cosmical-7078ea12",
+  "file_limit": "130",
+  "batch_size": 64,
+  "object_type": "folder",
+  "S3_object_name": "scripts/code/Anomaly Detection",
+  "script": "/tmp/scripts/code/Anomaly Detection/Inference/inference_simplified.py",
+  "result_path": "results/optimized_production",
+  "data_bucket": "team2-cosmical-7078ea12",
+  "data_prefix": "datasets/100MB_chunks"
+}
+```
+
+
+</details>
