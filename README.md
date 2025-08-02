@@ -30,6 +30,24 @@
 Zachary Holland & Devlin Bridges (Group 2)
 
 
+## Project Overview
+
+This project applies advanced AI infrastructure—including Serverless Data Engineering with Fully Managed Infrastructure (FMI) and cutting-edge models like Vision Transformers and Astro MAE, to process large-scale astronomy image datasets. The methodology follows a three-stage approach, aiming to optimize performance while minimizing computational cost.
+
+Key techniques explored include:
+- Data cropping and parameter tuning
+- Load balancing and communication overhead mitigation
+- Distributed and serverless inference using AWS Lambda and Step Functions
+
+The broader goal of the project is to prototype scalable pipelines for redshift detection and image analysis at scale, using real astronomical data. Students are encouraged to explore trade-offs between batch sizes, world sizes (parallel workers), and dataset chunk sizes to improve both throughput and cost-efficiency.
+
+> _Inspired by the lecture: “Optimizing AI for Astronomy: Redshift Detection and Scalable Image Processing”_
+
+---
+
+
+
+
 <details>
 <summary><strong>Step 1: AWS Lambda Step Functions</strong></summary>
 
